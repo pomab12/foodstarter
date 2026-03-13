@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as FoodRouteImport } from './routes/food'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiResumeChatRouteImport } from './routes/api.resume-chat'
 
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -32,35 +38,46 @@ const ApiResumeChatRoute = ApiResumeChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/food': typeof FoodRoute
   '/api/resume-chat': typeof ApiResumeChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/food': typeof FoodRoute
   '/api/resume-chat': typeof ApiResumeChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/food': typeof FoodRoute
   '/api/resume-chat': typeof ApiResumeChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/api/resume-chat'
+  fullPaths: '/' | '/about' | '/food' | '/api/resume-chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/api/resume-chat'
-  id: '__root__' | '/' | '/about' | '/api/resume-chat'
+  to: '/' | '/about' | '/food' | '/api/resume-chat'
+  id: '__root__' | '/' | '/about' | '/food' | '/api/resume-chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  FoodRoute: typeof FoodRoute
   ApiResumeChatRoute: typeof ApiResumeChatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  FoodRoute: FoodRoute,
   ApiResumeChatRoute: ApiResumeChatRoute,
 }
 export const routeTree = rootRouteImport

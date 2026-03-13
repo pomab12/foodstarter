@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { marked } from 'marked'
 
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { allJobs, allEducations } from 'content-collections'
 import { Card, CardContent, CardHeader, CardTitle } from '#/components/ui/card'
 import { Checkbox } from '#/components/ui/checkbox'
@@ -43,6 +43,41 @@ function App() {
     <>
       <ResumeAssistant />
       <div className="min-h-screen bg-linear-to-b from-gray-50 to-gray-100">
+        {/* Hero Section */}
+        <div className="relative bg-linear-to-br from-blue-600 via-blue-700 to-indigo-800 text-white overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzMuMzEgMCA2LTIuNjkgNi02cy0yLjY5LTYtNi02LTYgMi42OS02IDYgMi42OSA2IDYgNnptLTEyIDZjMi4yMSAwIDQtMS43OSA0LTRzLTEuNzktNC00LTQtNCAxLjc5LTQgNCAxLjc5IDQgNCA0em0yNCAyNGMzLjMxIDAgNi0yLjY5IDYtNnMtMi42OS02LTYtNi02IDIuNjktNiA2IDIuNjkgNiA2IDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div className="text-center space-y-6">
+              <h1 className="text-6xl font-bold tracking-tight">
+                Welcome to My Professional Portfolio
+              </h1>
+              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+                Explore my career journey, technical expertise, and professional accomplishments. 
+                Discover how my experience can bring value to your organization.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 pt-6">
+                <Link
+                  to="/about"
+                  className="inline-flex items-center px-8 py-3 border-2 border-white text-base font-medium rounded-lg text-white hover:bg-white hover:text-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  Learn More About Me
+                </Link>
+                <Link
+                  to="/food"
+                  className="inline-flex items-center px-8 py-3 bg-white text-base font-medium rounded-lg text-blue-700 hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl"
+                >
+                  View Food Management
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+              <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="rgb(249, 250, 251)"/>
+            </svg>
+          </div>
+        </div>
+
         <div className="flex">
           {/* Sidebar with filters */}
           <div className="w-72 min-h-screen bg-white border-r shadow-sm p-8 sticky top-0">
